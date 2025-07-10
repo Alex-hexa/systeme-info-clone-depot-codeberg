@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: todoapiconfig2
+data:
+  # property-like keys; each key maps to a simple value
+  SUPER_TOKEN: "5454545454"

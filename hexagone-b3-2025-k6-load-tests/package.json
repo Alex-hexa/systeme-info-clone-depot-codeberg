@@ -1,0 +1,15 @@
+{
+  "name": "hexagone-b3-2025-load-tests-k6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/k6": "^1.0.2"
+  }
+}

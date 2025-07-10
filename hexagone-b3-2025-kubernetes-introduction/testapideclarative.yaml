@@ -1,0 +1,98 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2025-07-09T08:40:52Z"
+  labels:
+    run: testapideclarative
+  name: testapideclarative
+  namespace: default
+  resourceVersion: "19958"
+  uid: b33211c3-5389-4def-901b-c2c5fe4ccc13
+spec:
+  containers:
+  - image: localhost:5000/argonaultes-it-works:2.0
+    imagePullPolicy: IfNotPresent
+    name: testapideclarative
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-6zddf
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: minikube
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-6zddf
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2025-07-09T08:40:52Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2025-07-09T08:40:53Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2025-07-09T08:40:53Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2025-07-09T08:40:52Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://a6de19641f5186110fc05471e5c2a7bcdaed0397c559dba0e290b95e92b7210e
+    image: localhost:5000/argonaultes-it-works:1.0
+    imageID: docker://sha256:9259f8566bcfdf0b987d5e13c40d944e92b7088241cb51e10ab70c7e3d167937
+    lastState: {}
+    name: testapideclarative
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2025-07-09T08:40:53Z"
+  hostIP: 192.168.49.2
+  phase: Running
+  podIP: 10.244.0.21
+  podIPs:
+  - ip: 10.244.0.21
+  qosClass: BestEffort
+  startTime: "2025-07-09T08:40:52Z"
